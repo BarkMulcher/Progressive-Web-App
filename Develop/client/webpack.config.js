@@ -20,7 +20,7 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         template: './index.html',
-        title: 'JATR'
+        title: 'JATE'
       }),
 
       new InjectManifest({
@@ -29,6 +29,8 @@ module.exports = () => {
       }),
 
       new WebpackPwaManifest({
+        fingerprints: false,
+        inject: true,
         name: "Just Another Text Editor",
         short_name: "JATER",
         description: "This application installs JATE",
@@ -39,7 +41,7 @@ module.exports = () => {
         icons: [
           {
             src: path.resolve('src/images/logo.png'),
-            sizes: [96,128,192,256,384,512],
+            sizes: [96, 128, 192, 256, 384, 512],
             destination: path.join('assets', 'icons')
           }
         ]
