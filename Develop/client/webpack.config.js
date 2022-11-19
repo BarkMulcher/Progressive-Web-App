@@ -22,6 +22,12 @@ module.exports = () => {
         template: './index.html',
         title: 'JATR'
       }),
+
+      new InjectManifest({
+        swSrc: './src-sw.js',
+        swDest: 'src-sw.js'
+      }),
+
       new WebpackPwaManifest({
         name: "Just Another Text Editor",
         short_name: "JATER",
@@ -29,31 +35,17 @@ module.exports = () => {
         background_color: 'blue',
         theme_color: 'gray',
         start_url: '/',
-        publicPath: '/'
-      }),
-
-      new InjectManifest(),
-      new WebpackPwaManifest({
-        
-          "short_name": "Manifest",
-          "name": "TODOs Manifest Example",
-          "icons": [
-            {
-              "src": "./favicon.ico",
-              "type": "image/png",
-              "sizes": "96x96",
-              "purpose": "any maskable"
-            }
-          ],
-          "orientation": "portrait",
-          "display": "standalone",
-          "start_url": "./",
-          "description": "Keep track of important tasks!",
-          "background_color": "#7eb4e2",
-          "theme_color": "#7eb4e2"
-        
+        publicPath: '/',
+        icons: [
+          {
+            src: path.resolve('src/images/logo.png'),
+            sizes: [96,128,192,256,384,512],
+            destination: path.join('assets', 'icons')
+          }
+        ]
       }),
     ],
+
 
     module: {
       rules: [
